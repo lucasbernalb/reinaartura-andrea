@@ -56,10 +56,10 @@ export default function CartPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-surface-light/50 p-6 rounded-lg flex gap-6"
+                className="bg-[#1a1412]/50 p-6 rounded-lg flex gap-6 border border-[#D8A0D8]/10"
               >
                 <Link href={`/product/${item.id}`}>
-                  <div className="relative w-32 h-32 md:w-40 md:h-40 bg-surface-dark rounded-lg overflow-hidden flex-shrink-0">
+                  <div                     className="relative w-32 h-32 md:w-40 md:h-40 bg-[#0a0808] rounded-lg overflow-hidden flex-shrink-0">
                     <Image
                       src={item.image_url}
                       alt={item.title}
@@ -139,7 +139,7 @@ export default function CartPage() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="bg-surface-light/50 p-8 rounded-lg sticky top-24"
+                    className="bg-[#1a1412]/50 p-8 rounded-lg sticky top-24 border border-[#D8A0D8]/10"
             >
               <h2 className="font-display text-xl font-semibold text-text-primary mb-6">
                 Resumen del Pedido
@@ -156,7 +156,7 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <div className="border-t border-surface-light my-6 pt-6">
+              <div               className="border-t border-[#D8A0D8]/20 my-6 pt-6">
                 <div className="flex justify-between items-center">
                   <span className="font-display text-lg font-semibold text-text-primary">Total</span>
                   <Price amount={total} size="lg" />
@@ -164,9 +164,9 @@ export default function CartPage() {
               </div>
 
               <motion.button
-                whileHover={{ scale: 1.02, boxShadow: '0 0 40px rgba(139, 92, 246, 0.4)' }}
+                whileHover={{ scale: 1.02, boxShadow: '0 0 40px rgba(216, 160, 216, 0.4)' }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-accent-violet-light hover:bg-accent-violet text-[#080510] py-4 rounded-lg font-medium text-lg tracking-wide transition-all duration-300"
+                className="w-full bg-[#D8A0D8] hover:bg-[#D8A0D8]/90 text-[#0a0808] py-4 rounded-lg font-medium text-lg tracking-wide transition-all duration-300"
               >
                 Proceder al Checkout
               </motion.button>

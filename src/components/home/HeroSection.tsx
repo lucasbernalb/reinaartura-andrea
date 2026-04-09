@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1920&q=80';
 
@@ -10,10 +11,13 @@ export default function HeroSection() {
     <section className="relative h-screen min-h-[650px] overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <img
+        <Image
           src={HERO_IMAGE}
           alt="Arte de Andrea Bernasconi"
-          className="w-full h-full object-cover"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
         />
         
         {/* Elegant gradient overlays */}

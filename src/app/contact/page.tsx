@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -13,18 +13,33 @@ export default function ContactPage() {
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
-    // Por ahora solo simulamos el envío
+    
+    // Basic client-side validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    // Simulate form submission (replace with actual API call)
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    setIsSubmitting(false);
     setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
+    
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    }, 3000);
+  }, [formData]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -281,11 +296,22 @@ export default function ContactPage() {
 
                     <motion.button
                       type="submit"
-                      whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(216, 160, 216, 0.4)' }}
+                      whileHover={!isSubmitting ? { scale: 1.02, boxShadow: '0 0 30px rgba(216, 160, 216, 0.4)' } : {}}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-4 rounded-lg font-medium text-sm tracking-wider uppercase transition-all duration-300 border-2 border-[#D8A0D8]/70 bg-[#D8A0D8]/10 hover:bg-[#D8A0D8]/20 text-ivory"
+                      disabled={isSubmitting}
+                      className="w-full py-4 rounded-lg font-medium text-sm tracking-wider uppercase transition-all duration-300 border-2 border-[#D8A0D8]/70 bg-[#D8A0D8]/10 hover:bg-[#D8A0D8]/20 text-ivory disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
-                      Enviar Mensaje
+                      {isSubmitting ? (
+                        <>
+                          <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                          </svg>
+                          Enviando...
+                        </>
+                      ) : (
+                        'Enviar Mensaje'
+                      )}
                     </motion.button>
                   </form>
                 </>
