@@ -46,6 +46,8 @@ const nextConfig = {
         hostname: '*.supabase.co',
       },
     ],
+    // Soporte para imágenes locales en /public
+    unoptimized: true,
   },
   
   // Compress responses

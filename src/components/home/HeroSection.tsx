@@ -2,27 +2,31 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
 
-const HERO_IMAGE = 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1920&q=80';
+const HERO_IMAGE = '/hero.jpeg';
 
 export default function HeroSection() {
   return (
     <section className="relative h-screen min-h-[650px] overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image con blur */}
       <div className="absolute inset-0">
-        <Image
-          src={HERO_IMAGE}
-          alt="Arte de Andrea Bernasconi"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
+        {/* Imagen con blur */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ 
+            backgroundImage: `url(${HERO_IMAGE})`,
+            filter: 'blur(8px) brightness(0.5) saturate(0.8)',
+          }}
         />
         
-        {/* Elegant gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
+        {/* Overlay oscuro fuerte */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0808]/85 via-[#0a0808]/70 to-[#0a0808]/90" />
+        
+        {/* Overlay lateral para crear viñeta */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0808]/50 via-transparent to-[#0a0808]/50" />
+        
+        {/* Overlay superior para fade */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0808]/60 via-transparent to-transparent" />
       </div>
 
       {/* Decorative corner elements - lilac */}
@@ -39,15 +43,26 @@ export default function HeroSection() {
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center max-w-4xl"
         >
-          {/* Crown - lilac */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-[#D8A0D8] text-5xl mb-8 drop-shadow-[0_0_15px_rgba(216,160,216,0.5)]"
-          >
-            ♔
-          </motion.div>
+          {/* Crown - lilac con animación */}
+          <div className="relative mb-8 inline-block">
+            {/* Corona con glow pulsante y float */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ 
+                opacity: 1, 
+                scale: 1,
+                y: [0, -8, 0],
+              }}
+              transition={{
+                delay: 0.2,
+                duration: 0.6,
+                y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+              }}
+              className="text-[#D8A0D8] text-5xl animate-crown-glow"
+            >
+              ♔
+            </motion.div>
+          </div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -83,10 +98,10 @@ export default function HeroSection() {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="flex flex-col sm:flex-row justify-center gap-5"
           >
-            {/* Primary button - ivory with lilac border */}
+            {/* Primary button - lilac filled */}
             <Link 
               href="#destacadas"
-              className="bg-gradient-to-r from-ivory to-ivory-light hover:from-ivory-light hover:to-ivory text-olive-dark px-10 py-4 rounded-lg font-bold text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105 border-2 border-[#D8A0D8]/50 shadow-[0_4px_20px_rgba(216,160,216,0.3)] hover:shadow-[0_6px_30px_rgba(216,160,216,0.5)]"
+              className="bg-gradient-to-r from-[#D8A0D8] to-[#C8A2C8] hover:from-[#E0B0E0] hover:to-[#D8A0D8] text-ivory-dark px-10 py-4 rounded-lg font-bold text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105 shadow-[0_4px_20px_rgba(216,160,216,0.4)] hover:shadow-[0_6px_30px_rgba(216,160,216,0.6)]"
             >
               Explorar Colecciones
             </Link>
@@ -99,25 +114,6 @@ export default function HeroSection() {
             >
               Conocer a Andrea
             </Link>
-          </motion.div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-12"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2.5, repeat: Infinity }}
-            className="flex flex-col items-center gap-2"
-          >
-            <span className="text-ivory/50 text-xs tracking-widest uppercase">Scroll</span>
-            <svg className="h-5 w-5 text-[#D8A0D8]/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
           </motion.div>
         </motion.div>
       </div>

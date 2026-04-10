@@ -1,4 +1,5 @@
 import HeroSection from '@/components/home/HeroSection';
+import ArtExperience from '@/components/home/ArtExperience';
 import ProductGrid from '@/components/product/ProductGrid';
 import { getFeaturedProducts, mockProducts } from '@/data/mockProducts';
 
@@ -11,7 +12,11 @@ export default function Home() {
     <>
       <HeroSection />
       
-      <section id="destacadas" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Experiencia Artística - Storytelling */}
+      <ArtExperience />
+      
+      {/* Ecommerce - Grid de Productos */}
+      <section id="destacadas" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <ProductGrid
           products={featuredProducts}
           title="Obras Destacadas"
