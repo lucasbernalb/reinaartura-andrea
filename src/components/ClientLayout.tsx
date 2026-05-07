@@ -6,6 +6,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CartDrawer from '@/components/layout/CartDrawer';
 import Toast from '@/components/ui/Toast';
+import HeroSection from '@/components/home/HeroSection';
 
 function ToastWrapper({ children }: { children: ReactNode }) {
   const { toast, hideToast } = useCart();
@@ -27,10 +28,11 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
   return (
     <CartProvider>
       <ToastWrapper>
-        <div className="min-h-screen bg-background flex flex-col">
+        <div className="bg-background flex flex-col">
           <Navbar />
           <CartDrawer />
-          <main className="flex-1 pt-16 md:pt-20">
+          <HeroSection />
+          <main className="pt-16 md:pt-20 bg-gradient-to-b from-[#0a0808] to-transparent">
             {children}
           </main>
           <Footer />

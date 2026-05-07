@@ -1,4 +1,3 @@
-import HeroSection from '@/components/home/HeroSection';
 import ArtExperience from '@/components/home/ArtExperience';
 import ProductGrid from '@/components/product/ProductGrid';
 import { getFeaturedProducts, mockProducts } from '@/data/mockProducts';
@@ -10,8 +9,6 @@ export default function Home() {
 
   return (
     <>
-      <HeroSection />
-      
       {/* Experiencia Artística - Storytelling */}
       <ArtExperience />
       

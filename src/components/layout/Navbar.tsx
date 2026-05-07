@@ -12,30 +12,36 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20 relative">
           {/* Logo container */}
-          <Link 
-            href="/" 
-            className="relative group flex flex-col"
+          <Link
+            href="/"
+            className="relative group flex flex-col items-center"
           >
-            {/* Crown - lilac */}
-            <span 
-              className="absolute -top-4 left-1/2 -translate-x-1/2"
-              style={{ color: '#D8A0D8', fontSize: '14px' }}
-            >
-              ♔
-            </span>
-            
             {/* Main logo text */}
-            <span className="font-display text-2xl md:text-3xl font-semibold tracking-wide text-ivory group-hover:text-ivory-light transition-colors duration-300">
-              Reina<span style={{ color: '#D8A0D8' }}>Artura</span>
-            </span>
-            
-            {/* Signature - below the logo, right-aligned, lilac */}
-            <span 
-              className="absolute -bottom-4 left-full ml-2 font-signature whitespace-nowrap"
-              style={{ color: '#D8A0D8', fontSize: '13px' }}
-            >
-              by Andrea Bernasconi
-            </span>
+            <div className="flex flex-col items-center leading-none">
+              <span className="font-cormorant text-2xl md:text-3xl font-light tracking-wide text-ivory group-hover:text-ivory-light transition-colors duration-300">
+                Reina<span className="font-semibold relative" style={{ color: '#D8A0D8' }}>
+                  Artura
+                  {/* Crown integrated over the "A" */}
+                  <span
+                    className="absolute left-1/2 -translate-x-1/2 -top-3 text-xs md:text-sm leading-none"
+                    style={{ color: '#D8A0D8' }}
+                  >
+                    ♔
+                  </span>
+                </span>
+              </span>
+
+              {/* Decorative separator */}
+              <div className="w-full h-px bg-[#D8A0D8]/40 mt-1" />
+
+              {/* Signature - italic, muted */}
+              <span
+                className="font-signature whitespace-nowrap mt-1"
+                style={{ color: '#D8A0D8', fontSize: '11px', opacity: 0.7 }}
+              >
+                by Andrea Bernasconi
+              </span>
+            </div>
           </Link>
 
           {/* Navigation - hover with lilac */}
