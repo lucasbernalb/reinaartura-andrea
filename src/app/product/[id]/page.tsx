@@ -62,14 +62,14 @@ export default function ProductDetail() {
           className="absolute inset-0"
           style={{ y: backgroundY, scale: backgroundScale }}
         >
-          <Image
-            src={product.image_url}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
+              <Image
+                   src={product.image_url}
+                   alt={product.title}
+                   fill
+                   className="object-cover"
+                   sizes="100vw"
+                   priority
+                 />
         </motion.div>
         
         {/* Overlays para legibilidad */}

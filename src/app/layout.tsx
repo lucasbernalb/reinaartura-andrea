@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Cormorant_Garamond, Work_Sans } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
 
@@ -13,6 +13,20 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  variable: "--font-work-sans",
+  display: "swap",
+  weight: ["300", "400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -69,8 +83,39 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // JSON-LD structured data for ArtGallery
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ArtGallery",
+    "name": "Reina Artura",
+    "description": "Galería de arte premium en Uruguay. Cuadros originales y prints de edición limitada por Andrea Bernasconi.",
+    "url": "https://reinaartura.com",
+    "logo": "https://reinaartura.com/icon.svg",
+    "image": "https://reinaartura.com/og-image.jpg",
+    "founder": {
+      "@type": "Person",
+      "name": "Andrea Bernasconi",
+      "jobTitle": "Artista Visual"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Montevideo",
+      "addressCountry": "UY"
+    },
+    "sameAs": [
+      "https://instagram.com/reinaartura",
+      "https://facebook.com/reinaartura"
+    ]
+  };
+
   return (
-    <html lang="es" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="es" className={`${playfair.variable} ${inter.variable} ${cormorant.variable} ${workSans.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="antialiased">
         <ClientLayout>{children}</ClientLayout>
       </body>

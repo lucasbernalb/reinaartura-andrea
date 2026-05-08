@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 import { CartProvider, useCart } from '@/context/CartContext';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -25,13 +26,16 @@ function ToastWrapper({ children }: { children: ReactNode }) {
 }
 
 export default function ClientLayout({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
+  
   return (
     <CartProvider>
       <ToastWrapper>
         <div className="bg-background flex flex-col">
           <Navbar />
           <CartDrawer />
-          <HeroSection />
+          {isHomePage && <HeroSection />}
           <main className="pt-16 md:pt-20 bg-gradient-to-b from-[#0a0808] to-transparent">
             {children}
           </main>

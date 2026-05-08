@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
 import ArtExperience from '@/components/home/ArtExperience';
 import ProductGrid from '@/components/product/ProductGrid';
 import { getFeaturedProducts, mockProducts } from '@/data/mockProducts';
+
+export const metadata: Metadata = {
+  title: "Inicio",
+  description: "Descubre colecciones exclusivas de arte premium. Cuadros originales y prints de edición limitada por Andrea Bernasconi en Reina Artura.",
+  openGraph: {
+    title: "Reina Artura | Galería de Arte Premium",
+    description: "Descubre colecciones exclusivas de arte premium. Cuadros originales y prints de edición limitada.",
+  },
+};
 
 export default function Home() {
   const featuredProducts = getFeaturedProducts();

@@ -69,7 +69,8 @@ const config: Config = {
         display: ["var(--font-playfair)", "serif"],
         body: ["var(--font-inter)", "sans-serif"],
         signature: ["Caveat", "cursive"],
-        heading: ["Cormorant Garamond", "serif"],
+        heading: ["var(--font-cormorant)", "serif"],
+        work: ["var(--font-work-sans)", "sans-serif"],
       },
       borderRadius: {
         sm: "4px",
