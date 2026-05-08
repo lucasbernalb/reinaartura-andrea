@@ -10,24 +10,22 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-surface-frame/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20 relative overflow-visible">
+        <div className="flex justify-between items-center h-16 md:h-20 relative">
           {/* Logo container */}
           <Link
             href="/"
-            className="relative group flex flex-col items-center overflow-visible"
+            className="relative group flex flex-col items-center"
           >
             {/* Main logo text */}
-            <div className="flex flex-col items-center leading-none overflow-visible">
-              <span className="font-cormorant text-xl md:text-2xl font-light tracking-wide text-ivory group-hover:text-ivory-light transition-colors duration-300">
-                Reina<span className="font-semibold relative overflow-visible" style={{ color: '#D8A0D8' }}>
+            <div className="flex flex-col items-center leading-none">
+              <span className="font-cormorant text-xl md:text-2xl font-light tracking-wide text-ivory group-hover:text-ivory-light transition-colors duration-300 inline-flex items-baseline gap-1">
+                <span>Reina</span>
+                <span className="font-semibold flex flex-col items-center" style={{ color: '#D8A0D8' }}>
+                  <svg width="10" height="7" viewBox="0 0 28 20" className="block -mb-1">
+                    <path d="M2 18 L5 8 L10 13 L14 4 L18 13 L23 8 L26 18 Z" fill="#D8A0D8" />
+                    <rect x="2" y="18" width="24" height="4" rx="1" fill="#D8A0D8" />
+                  </svg>
                   Artura
-                  {/* Crown integrated over the "A" */}
-                  <span
-                    className="absolute left-1/2 -translate-x-1/2 -top-3 md:-top-2.5 text-[10px] md:text-xs leading-none z-20"
-                    style={{ color: '#D8A0D8' }}
-                  >
-                    ♔
-                  </span>
                 </span>
               </span>
 
