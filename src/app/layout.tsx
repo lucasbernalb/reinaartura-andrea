@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import dynamic from 'next/dynamic';
 import { Playfair_Display, Inter, Cormorant_Garamond, Work_Sans } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
+
+const PageLoader = dynamic(() => import('@/components/PageLoader'), { ssr: false });
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -117,6 +120,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        <PageLoader />
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
