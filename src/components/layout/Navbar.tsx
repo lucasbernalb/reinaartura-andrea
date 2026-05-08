@@ -23,7 +23,7 @@ export default function Navbar() {
                   Artura
                   {/* Crown integrated over the "A" */}
                   <span
-                    className="absolute left-1/2 -translate-x-1/2 -top-0.5 md:-top-2.5 text-[10px] md:text-xs leading-none"
+                    className="absolute left-1/2 -translate-x-1/2 -top-2 md:-top-2.5 text-[10px] md:text-xs leading-none z-20"
                     style={{ color: '#D8A0D8' }}
                   >
                     ♔
