@@ -2,7 +2,13 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { cn } from '@/utils/cn';
+
+const CrownCanvas = dynamic(
+  () => import('./CrownCanvas'),
+  { ssr: false }
+);
 
 const HERO_IMAGE = '/hero.jpeg';
 
@@ -113,19 +119,10 @@ export default function HeroSection(props: HeroSectionProps) {
             className="text-center max-w-4xl"
           >
             {/* Crown */}
-            <motion.div variants={crownVariants} className="relative mb-4 inline-block">
-              <motion.div
-                animate={{
-                  y: [0, -8, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                }}
-                className="text-[#D8A0D8] text-5xl animate-crown-glow"
-              >
-                ♔
-              </motion.div>
+            <motion.div variants={crownVariants} className="relative mb-4 inline-block" style={{ width: '180px', height: '180px' }}>
+              <div className="absolute inset-0 flex items-center justify-center md:w-[180px] md:h-[180px] w-[120px] h-[120px] pointer-events-none">
+                <CrownCanvas />
+              </div>
             </motion.div>
             
             {/* Radial Glow */}
