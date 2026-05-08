@@ -57,7 +57,7 @@ export default function HeroSection(props: HeroSectionProps) {
   const { className = '' } = props;
   
   return (
-    <section className={`relative h-[100dvh] flex flex-col items-center justify-center overflow-hidden ${className}`}>
+    <section className={`relative h-[100dvh] flex flex-col items-center justify-center overflow-hidden pt-16 md:pt-20 ${className}`}>
       {/* Background structure - covers full viewport including behind navbar */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Background image with blur */}

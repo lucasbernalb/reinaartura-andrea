@@ -18,14 +18,16 @@ export default function Navbar() {
           >
             {/* Main logo text */}
             <div className="flex flex-col items-center leading-none">
-              <span className="font-cormorant text-xl md:text-2xl font-light tracking-wide text-ivory group-hover:text-ivory-light transition-colors duration-300 inline-flex items-baseline gap-1">
-                <span>Reina</span>
-                <span className="font-semibold flex flex-col items-center" style={{ color: '#D8A0D8' }}>
-                  <svg width="10" height="7" viewBox="0 0 28 20" className="block -mb-1">
-                    <path d="M2 18 L5 8 L10 13 L14 4 L18 13 L23 8 L26 18 Z" fill="#D8A0D8" />
-                    <rect x="2" y="18" width="24" height="4" rx="1" fill="#D8A0D8" />
-                  </svg>
+              <span className="font-cormorant text-xl md:text-2xl font-light tracking-wide text-ivory group-hover:text-ivory-light transition-colors duration-300">
+                Reina<span className="font-semibold relative" style={{ color: '#D8A0D8' }}>
                   Artura
+                  {/* Crown integrated over the "A" */}
+                  <span
+                    className="absolute left-1/2 -translate-x-1/2 -top-2.5 text-[10px] md:text-xs leading-none"
+                    style={{ color: '#D8A0D8' }}
+                  >
+                    ♔
+                  </span>
                 </span>
               </span>
 
