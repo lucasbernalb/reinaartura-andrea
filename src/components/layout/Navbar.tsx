@@ -18,12 +18,12 @@ export default function Navbar() {
           >
             {/* Main logo text */}
             <div className="flex flex-col items-center leading-none">
-              <span className="font-cormorant text-2xl md:text-3xl font-light tracking-wide text-ivory group-hover:text-ivory-light transition-colors duration-300">
+              <span className="font-cormorant text-xl md:text-2xl font-light tracking-wide text-ivory group-hover:text-ivory-light transition-colors duration-300">
                 Reina<span className="font-semibold relative" style={{ color: '#D8A0D8' }}>
                   Artura
                   {/* Crown integrated over the "A" */}
                   <span
-                    className="absolute left-1/2 -translate-x-1/2 -top-3 text-xs md:text-sm leading-none"
+                    className="absolute left-1/2 -translate-x-1/2 -top-2.5 text-[10px] md:text-xs leading-none"
                     style={{ color: '#D8A0D8' }}
                   >
                     ♔
@@ -32,12 +32,12 @@ export default function Navbar() {
               </span>
 
               {/* Decorative separator */}
-              <div className="w-full h-px bg-[#D8A0D8]/40 mt-1" />
+              <div className="w-full h-px bg-[#D8A0D8]/40 mt-0.5" />
 
               {/* Signature - italic, muted */}
               <span
-                className="font-signature whitespace-nowrap mt-1"
-                style={{ color: '#D8A0D8', fontSize: '11px', opacity: 0.7 }}
+                className="font-signature whitespace-nowrap mt-0.5"
+                style={{ color: '#D8A0D8', fontSize: '10px', opacity: 0.7 }}
               >
                 by Andrea Bernasconi
               </span>

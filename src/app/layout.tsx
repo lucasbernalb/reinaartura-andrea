@@ -1,10 +1,22 @@
 import type { Metadata } from "next";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 import { Playfair_Display, Inter, Cormorant_Garamond, Work_Sans } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
 
-const PageLoader = dynamic(() => import('@/components/PageLoader'), { ssr: false });
+const PageLoader = dynamic(() => import("@/components/PageLoader"), {
+  ssr: false,
+  loading: () => (
+    <div
+      style={{
+        position: "fixed",
+        inset: 0,
+        background: "#0d0010",
+        zIndex: 9999,
+      }}
+    />
+  ),
+});
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -121,7 +133,9 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <PageLoader />
-        <ClientLayout>{children}</ClientLayout>
+        <div style={{ animation: "pageIn 0.8s ease 4.8s forwards", opacity: 0 }}>
+          <ClientLayout>{children}</ClientLayout>
+        </div>
       </body>
     </html>
   );
