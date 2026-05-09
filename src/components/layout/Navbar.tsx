@@ -137,7 +137,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-              className="fixed right-0 top-0 bottom-0 w-full max-w-xs bg-[#0a0808] border-l border-surface-frame flex flex-col z-50 md:hidden"
+              className="fixed right-0 top-0 bottom-0 w-full max-w-xs bg-surface border-l border-surface-frame flex flex-col z-50 md:hidden"
             >
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-surface-frame">
