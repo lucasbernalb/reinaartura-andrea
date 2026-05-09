@@ -119,36 +119,26 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu overlay */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="absolute top-full left-0 right-0 glass-dark border-b border-[#D8A0D8]/20 md:hidden"
-          >
-            <div className="flex flex-col items-center gap-1 px-4 py-6">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.2 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={closeMobile}
-                    className="block text-center text-ivory hover:text-[#D8A0D8] transition-colors duration-300 text-sm tracking-widest uppercase py-3 px-8 w-full"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        className={`md:hidden absolute top-full left-0 right-0 glass-dark border-b border-[#D8A0D8]/20 transition-all duration-300 ${
+          mobileOpen
+            ? 'opacity-100 translate-y-0 pointer-events-auto'
+            : 'opacity-0 -translate-y-2 pointer-events-none'
+        }`}
+      >
+        <div className="flex flex-col items-center gap-1 px-4 py-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={closeMobile}
+              className="block text-center text-ivory hover:text-[#D8A0D8] transition-colors duration-300 text-sm tracking-widest uppercase py-3 px-8 w-full"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      </div>
     </nav>
   );
 }
