@@ -17,6 +17,7 @@ export default function Navbar() {
   ];
 
   return (
+    <>
     <nav className="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-surface-frame/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20 relative">
@@ -117,8 +118,9 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+    </nav>
 
-      {/* Mobile menu drawer - lateral slide like CartDrawer */}
+      {/* Mobile menu drawer — standalone, outside <nav> to avoid glass-dark stacking context */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -128,7 +130,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeMobile}
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 md:hidden"
+              className="fixed inset-0 bg-black/70 z-[60] md:hidden"
             />
             
             {/* Drawer panel */}
@@ -137,10 +139,11 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-              className="fixed right-0 top-0 bottom-0 w-full max-w-xs bg-surface border-l border-surface-frame flex flex-col z-50 md:hidden"
+              className="fixed right-0 top-0 bottom-0 w-full max-w-xs flex flex-col z-[60] md:hidden"
+              style={{ backgroundColor: '#1a1a1a' }}
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-surface-frame">
+              <div className="flex items-center justify-between p-6 border-b border-white/10">
                 <span className="font-cormorant text-lg font-semibold text-[#D8A0D8] tracking-wide">
                   ♔ Menú
                 </span>
@@ -162,7 +165,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={closeMobile}
-                    className="block text-ivory hover:text-[#D8A0D8] hover:bg-surface-elevated/50 transition-all duration-300 text-sm tracking-widest uppercase py-4 px-4 rounded-lg"
+                    className="block text-ivory hover:text-[#D8A0D8] hover:bg-white/5 transition-all duration-300 text-sm tracking-widest uppercase py-4 px-4 rounded-lg"
                   >
                     {link.label}
                   </Link>
@@ -170,7 +173,7 @@ export default function Navbar() {
               </div>
 
               {/* Footer */}
-              <div className="p-6 border-t border-surface-frame">
+              <div className="p-6 border-t border-white/10">
                 <p className="text-ivory/40 text-xs text-center">
                   Reina Artura © 2026
                 </p>
@@ -179,6 +182,6 @@ export default function Navbar() {
           </>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 }
