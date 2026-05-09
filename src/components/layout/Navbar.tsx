@@ -118,27 +118,67 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu overlay */}
-      <div
-        className={`md:hidden absolute top-full left-0 right-0 glass-dark border-b border-[#D8A0D8]/20 transition-all duration-300 ${
-          mobileOpen
-            ? 'opacity-100 translate-y-0 pointer-events-auto'
-            : 'opacity-0 -translate-y-2 pointer-events-none'
-        }`}
-      >
-        <div className="flex flex-col items-center gap-1 px-4 py-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
+      {/* Mobile menu drawer - lateral slide like CartDrawer */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={closeMobile}
-              className="block text-center text-ivory hover:text-[#D8A0D8] transition-colors duration-300 text-sm tracking-widest uppercase py-3 px-8 w-full"
+              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 md:hidden"
+            />
+            
+            {/* Drawer panel */}
+            <motion.div
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
+              className="fixed left-0 top-0 bottom-0 w-72 bg-surface border-r border-surface-frame flex flex-col z-50 md:hidden"
             >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      </div>
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-surface-frame">
+                <span className="font-cormorant text-lg font-semibold text-[#D8A0D8] tracking-wide">
+                  ♔ Menú
+                </span>
+                <button
+                  onClick={closeMobile}
+                  className="p-2 text-ivory/60 hover:text-[#D8A0D8] transition-colors cursor-pointer"
+                  aria-label="Cerrar menú"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Navigation links */}
+              <div className="flex-1 flex flex-col gap-1 p-6">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={closeMobile}
+                    className="block text-ivory hover:text-[#D8A0D8] hover:bg-surface-elevated/50 transition-all duration-300 text-sm tracking-widest uppercase py-4 px-4 rounded-lg"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+
+              {/* Footer */}
+              <div className="p-6 border-t border-surface-frame">
+                <p className="text-ivory/40 text-xs text-center">
+                  Reina Artura © 2026
+                </p>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
