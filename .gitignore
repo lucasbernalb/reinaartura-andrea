@@ -44,3 +44,6 @@ openspec/
 
 # Design previews
 design-preview*.html
+
+# Logs
+*.log

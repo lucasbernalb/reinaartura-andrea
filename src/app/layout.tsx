@@ -11,7 +11,7 @@ const PageLoader = dynamic(() => import("@/components/PageLoader"), {
       style={{
         position: "fixed",
         inset: 0,
-        background: "#0d0010",
+        background: "#0a0808",
         zIndex: 9999,
       }}
     />
